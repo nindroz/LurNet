@@ -1,5 +1,7 @@
+require("dotenv").config();
 const express = require("express");
-
+console.log("hey:" + process.env.AIRTABLE_ID);
+const base = require("airtable").base(process.env.AIRTABLE_ID);
 const app = express();
 
 app.get("/", (req, res) => {
