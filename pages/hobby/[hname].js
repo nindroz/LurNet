@@ -6,8 +6,12 @@ const Hobby = () => {
 	const router = useRouter();
 	const { hname } = router.query;
 	console.log(process.env.AIRTABLE_BASE_ID)
-	getHobby()
-	return <p>Hobby Name: {hname}</p>;
+	getHobby(hname).then(ret => {
+		console.log(ret)
+	}).catch(err => {
+		console.log(err)
+	});
+	return `hobby ${hname}`;
 }
 
 export default Hobby;

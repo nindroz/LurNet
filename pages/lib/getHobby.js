@@ -20,10 +20,12 @@ const minifyRecord = record => {
 };
 
 
-export default async function getHobby() {
-  const records = await table.select({}).all();
+export default async function getHobby(name) {
+  const records = await table.select({
+    maxRecords: 1, 
+    filterByFormula: `Name = "${name}"`
+  }).all()
   const minifiedRecords = await getMinifiedRecords(records);
-  console.log(minifiedRecords);
 
   return minifiedRecords;
 }
