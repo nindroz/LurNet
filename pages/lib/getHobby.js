@@ -25,7 +25,7 @@ export default async function getHobby(name) {
     maxRecords: 1, 
     filterByFormula: `Name = "${name}"`
   }).all()
-  const minifiedRecords = await getMinifiedRecords(records);
+  const minifiedRecords = getMinifiedRecords(records);
 
   return minifiedRecords;
 }

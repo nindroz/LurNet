@@ -1,21 +1,12 @@
-import React, {useEffect} from "react";
-import { useRouter } from "next/router";
+import React from "react";
 import getHobby from "../lib/getHobby"
 
 const Hobby = ({data}) => {
-	const router = useRouter();
-	const { hname } = router.query;
-	console.log(data);
-	
-	
-	return "hello";
+	return data[0].fields.Content;
 }
 
 export async function getServerSideProps(context) {
-	// Fetch data from external API
 	const data = await getHobby(context.query.hname);
-  
-	// Pass data to the page via props
 	return { props: { data } }
   }
 
